@@ -10,7 +10,7 @@ from PC_BM017CS import BM017
 
 bm017 = BM017(True)
 
-bm017.debug = True
+bm017.debug = False
 
 bm017.readStatus()
 
@@ -22,15 +22,7 @@ bm017.readStatus()
 bm017.disableDevice()
 bm017.setIntegrationTimeAndGain(0x00, 0x03)
 
-bm017.getColors()
-bm017.readStatus()
+while 1:
+    bm017.getColors()
 
-bm017.readStatus()
-
-# this will turn on the LED if LEDON is connected to INT and LEDVDD is connected to VDD_LED
-
-bm017.setInterrupt(True)
-time.sleep(5.0)
-bm017.setInterrupt(False)
-
-
+    print "C: %s, R: %s, G: %s, B: %s\n" % (bm017.clear_color, bm017.red_color, bm017.green_color, bm017.blue_color)
